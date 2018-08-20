@@ -71,14 +71,14 @@ readPrelexS ∷ Integer → String → Maybe (Integer, String)
    go _  [] = Nothing
    go !p (c:r)
       | d < 0 || d >= base_ = Nothing
-      | d == base_-1        = go p' r
+      | d == base_ - 1      = go p' r
       |                     = get 0 p' r
       where
          d = fromDigit c
          p' = p + d
-         get acc  0  l     = Just (digitExp base p' + acc, l)
-         get !acc !k (c:l) = get (acc * base + fromDigit c) (k-1) l
-         get _    _  _     = Nothing
+         get !acc 0 l     = Just (digitExp base p' + acc, l)
+         get !acc k (c:l) = get (acc * base + fromDigit c) (k-1) l
+         get _    _ _     = Nothing
 
 --  Partial function when you're certain (e.g., config files).
 readPrelex ∷ Integer → String → Integer
