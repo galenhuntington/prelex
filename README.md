@@ -33,7 +33,7 @@ Prelude Prelex> succ $ succ $ succ zero
 12
 ```
 
-The basic design is simple:  The first digit specifies the number of
+The basic design is simple: the first digit specifies the number of
 digits that come after.  This gives you a stream of numbers increasing
 both in value and alphabetically.
 
@@ -53,9 +53,9 @@ Prelude Prelex> fromIntegral (succ val) :: Integer
 101
 ```
 
-Note that numeric literals in Haskell are implicitly cast with
-`fromIntegral`, but `read` can process a string.  Use with `Num`
-instances can be convenient:
+Numeric literals in Haskell are implicitly cast with `fromIntegral`.
+`read` can be used to parse a string.  Use with `Num` instances can
+be convenient:
 
 ```haskell
 Prelude Prelex> 10000 :: PrelexDecimal Integer
