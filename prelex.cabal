@@ -1,0 +1,17 @@
+name:                prelex
+version:             1.0.0
+license:             MIT
+license-file:        LICENSE.md
+author:              Galen Huntington
+category:            Math
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+library
+  exposed-modules:     Prelex
+  build-depends:       base, base-prelude, integer-logarithms, hpre
+  build-tool-depends:  hpre:hpre
+  default-extensions:  NoImplicitPrelude, BangPatterns, UnicodeSyntax, BlockArguments, TypeApplications, DerivingStrategies, KindSignatures, ScopedTypeVariables, DataKinds, GeneralizedNewtypeDeriving
+  ghc-options:         -F -pgmF hpre
+  default-language:    Haskell2010
