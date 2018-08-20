@@ -10,8 +10,8 @@ cabal-version:       >=1.10
 
 library
   exposed-modules:     Prelex
-  build-depends:       base, base-prelude, integer-logarithms, hpre
+  build-depends:       base, base-prelude, integer-logarithms
   build-tool-depends:  hpre:hpre
-  default-extensions:  NoImplicitPrelude, BangPatterns, UnicodeSyntax, BlockArguments, TypeApplications, DerivingStrategies, KindSignatures, ScopedTypeVariables, DataKinds, GeneralizedNewtypeDeriving
+  default-extensions:  NoImplicitPrelude, BangPatterns, ConstraintKinds, UnicodeSyntax, BlockArguments, TypeApplications, DerivingStrategies, KindSignatures, ScopedTypeVariables, DataKinds, GeneralizedNewtypeDeriving, TypeFamilies
   ghc-options:         -F -pgmF hpre
   default-language:    Haskell2010

@@ -22,17 +22,19 @@ newtype Prelex (base ∷ Nat) i = Prelex i
 
 type PrelexDecimal = Prelex 10
 
-instance KnownNat base ⇒ IsPrelex (Prelex base i) where
-   prelexBase _ = natVal $ Proxy @base
+type LegalBase b = (KnownNat b, CmpNat b 1 ~ GT, CmpNat b 37 ~ LT)
+
+instance LegalBase b ⇒ IsPrelex (Prelex b i) where
+   prelexBase _ = natVal $ Proxy @b
    -- would like to use this below, but becomes too verbose
-   -- e.g., prelexBase $ Proxy @(Prelex base i)
+   -- e.g., prelexBase $ Proxy @(Prelex b i)
 
 --  Useful with deriving via.
-instance (KnownNat base, Integral i) ⇒ Show (Prelex base i) where
-   show (Prelex x) = showPrelex (natVal $ Proxy @base) $ fromIntegral x
-instance (KnownNat base, Integral i) ⇒ Read (Prelex base i) where
+instance (LegalBase b, Integral i) ⇒ Show (Prelex b i) where
+   show (Prelex x) = showPrelex (natVal $ Proxy @b) $ fromIntegral x
+instance (LegalBase b, Integral i) ⇒ Read (Prelex b i) where
    readsPrec _ s = maybeToList $ first (Prelex . fromIntegral) <$>
-      readPrelexS (natVal $ Proxy @base) s
+      readPrelexS (natVal $ Proxy @b) s
 
 
 toDigit ∷ Integral n ⇒ n → Char
@@ -50,6 +52,10 @@ digitStream ∷ Integer → Integer → [Int]
 {-# INLINE digitExp #-}
 digitExp ∷ Integral a ⇒ Integer → a → Integer
 ”   base n = (base^n - 1) `div` (base - 1)
+
+
+--  These don't check if base is valid.
+--  (Use types for static guarantees.)
 
 showPrelex ∷ Integer → Integer → String
 ”   base n = map toDigit $ pfx ++ sfx where
