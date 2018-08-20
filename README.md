@@ -1,4 +1,4 @@
-Note:  This package requires GHC 8.6 or later to use.  It also requires
+Note:  This package requires GHC 8.6 or later.  It also requires
 installation of [hpre](https://github.com/galenhuntington/hpre).
 Install with `cabal install`.
 
@@ -10,13 +10,13 @@ I separated it into its own package for general use.
 You may have noticed that alphabetical order does not match numerical
 order, often annoyingly:
 
-```
+```yaml
 directory:
- version-10
- version-11
- version-7
- version-8
- version-9
+  version-10
+  version-11
+  version-7
+  version-8
+  version-9
 ```
 
 In many cases I'd prefer numbers inside strings that are
@@ -37,7 +37,7 @@ The basic design is simple:  The first digit specifies the number of
 digits that come after.  This gives you a stream of numbers increasing
 both in value and alphabetically.
 
-The `Int` represents the underlying type, which you can use to fix the
+The `Int` specifies the underlying type, which determines the
 representation.  For example, use `Integer` to get an unbounded type.
 The internal value is an ordinary sequential number, and you can
 translate back and forth:
@@ -53,7 +53,7 @@ Prelude Prelex> fromIntegral (succ val) :: Integer
 101
 ```
 
-Note that numeric literals in Haskell are implictly cast with
+Note that numeric literals in Haskell are implicitly cast with
 `fromIntegral`, but `read` can process a string.  Use with `Num`
 instances can be convenient:
 
@@ -81,8 +81,8 @@ Indeed, `type PrelexDecimal = Prelex 10`.
 
 For small bases, or large numbers, the first digit might overflow.
 If the first digit is the largest possible (e.g., 9 for base 10),
-then the second digit is consulted, and so on.  In this way, we can
-have an infinity of values:
+then the second digit is consulted, and so on.  In this way, there
+can be an infinity of values:
 
 ```haskell
 Prelude Prelex> 10000 :: Prelex 6 Integer
@@ -147,4 +147,3 @@ which is not the expected use case.  In the expected case, it is bloat.
 There are other variants that make some codes slightly shorter
 for certain usage profiles, but at the expense of introducing a
 proliferation of types.
-
