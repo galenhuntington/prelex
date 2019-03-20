@@ -101,7 +101,7 @@ zz80fkodb6763nsan6z9njhtwvpvcrjikx3mwkq7m1yxwomsbl1nc2xq6juh4o65tcwh7ps3rb0uu6t8
 ```haskell
 {-# LANGUAGE DataKinds, DerivingVia, GeneralizedNewtypeDeriving #-}
 import GHC.Word
-import Prelex
+import Math.Prelex
 newtype BatchId = BatchId Word64
    deriving newtype (Eq, Ord, Enum)
    deriving (Show, Read) via Prelex 16 Word64

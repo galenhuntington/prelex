@@ -1,6 +1,6 @@
 --  Lexicographically ordered representations of ints at any base.
 
-module Prelex (
+module Math.Prelex (
    showPrelex, readPrelex, readPrelexS,
    Prelex(..), PrelexDecimal, IsPrelex(..),
    fromDigit, toDigit,

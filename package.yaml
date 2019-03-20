@@ -1,0 +1,34 @@
+name: prelex
+version: 1.0.1
+synopsis: Sequential numerical IDs.
+author: Galen Huntington <galen@alumni.reed.edu>
+license: MIT
+category: Math
+
+default-extensions:
+   - BangPatterns
+   - BlockArguments
+   - ConstraintKinds
+   - DataKinds
+   - DerivingVia
+   - GeneralizedNewtypeDeriving
+   - NoImplicitPrelude
+   - KindSignatures
+   - ScopedTypeVariables
+   - TypeApplications
+   - TypeFamilies
+   - UnicodeSyntax
+ghc-options: -pgmF hpre -F
+
+source-dirs:
+   - .
+
+library: {}
+
+build-tools:
+   hpre: 1.0.*
+
+dependencies:
+   base: ">= 4.9 && < 5"
+   base-prelude: 1.3.*
+   integer-logarithms: 1.0.*

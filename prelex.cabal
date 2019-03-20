@@ -1,17 +1,33 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 4327cf306d7436662ebce6aa73d2fc89f1debe96935bf9cdd60215a897c6c6e9
+
 name:                prelex
-version:             1.0.0
+version:             1.0.1
+synopsis:            Sequential numerical IDs.
 license:             MIT
-license-file:        LICENSE.md
-author:              Galen Huntington
+author:              Galen Huntington <galen@alumni.reed.edu>
+maintainer:          Galen Huntington <galen@alumni.reed.edu>
 category:            Math
 build-type:          Simple
-extra-source-files:  README.md
-cabal-version:       >=1.10
 
 library
-  exposed-modules:     Prelex
-  build-depends:       base, base-prelude, integer-logarithms
-  build-tool-depends:  hpre:hpre
-  default-extensions:  NoImplicitPrelude, BangPatterns, ConstraintKinds, UnicodeSyntax, BlockArguments, TypeApplications, DerivingStrategies, KindSignatures, ScopedTypeVariables, DataKinds, GeneralizedNewtypeDeriving, TypeFamilies
-  ghc-options:         -F -pgmF hpre
-  default-language:    Haskell2010
+  exposed-modules:
+      Math.Prelex
+  other-modules:
+      Paths_prelex
+  hs-source-dirs:
+      ./.
+  build-depends:
+      base >=4.9 && <5
+    , base-prelude ==1.3.*
+    , integer-logarithms ==1.0.*
+  build-tool-depends:
+      hpre:hpre ==1.0.*
+  default-extensions: BangPatterns BlockArguments ConstraintKinds DataKinds DerivingVia GeneralizedNewtypeDeriving NoImplicitPrelude KindSignatures ScopedTypeVariables TypeApplications TypeFamilies UnicodeSyntax
+  ghc-options: -pgmF hpre -F
+  default-language: Haskell2010
