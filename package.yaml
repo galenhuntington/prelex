@@ -1,5 +1,5 @@
 name: prelex
-version: 1.0.1
+version: 1.0.2
 synopsis: Sequential numerical IDs.
 author: Galen Huntington <galen@alumni.reed.edu>
 license: MIT
@@ -26,7 +26,7 @@ source-dirs:
 library: {}
 
 build-tools:
-   hpre: 1.0.*
+   hpre: 1.*
 
 dependencies:
    base: ">= 4.9 && < 5"
