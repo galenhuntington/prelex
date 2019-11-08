@@ -1,6 +1,6 @@
 Note:  This package requires GHC 8.6 or later.  It also requires
 installation of [hpre](https://github.com/galenhuntington/hpre).
-Install with `cabal install`.
+Install with `cabal install` or `stack install`.
 
 ##  Intro
 
