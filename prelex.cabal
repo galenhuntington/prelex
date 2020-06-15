@@ -4,10 +4,10 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 532669fb26863d377a7e667eda802904fc2f5cb12d419735bb11e667c422dfe9
+-- hash: 6cb0855848e78883c15b64664dd77968a93cea2e26f2527d241504a7bb253f35
 
 name:                prelex
-version:             1.0.3
+version:             1.0.4
 synopsis:            Sequential numerical IDs.
 license:             MIT
 author:              Galen Huntington <galen@alumni.reed.edu>
@@ -24,7 +24,7 @@ library
       ./.
   build-depends:
       base >=4.9 && <5
-    , base-prelude ==1.4.*
+    , base-prelude >=1.3 && <1.5
     , integer-logarithms ==1.0.*
   build-tool-depends:
       hpre:hpre ==1.*
