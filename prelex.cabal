@@ -1,10 +1,10 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.33.0.
+-- This file has been generated from package.yaml by hpack version 0.34.4.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 6cb0855848e78883c15b64664dd77968a93cea2e26f2527d241504a7bb253f35
+-- hash: 5f946c0999c9246a6dffc39130e07312a2f084e19df771736bc03ea43e35b47d
 
 name:                prelex
 version:             1.0.4
@@ -21,13 +21,25 @@ library
   other-modules:
       Paths_prelex
   hs-source-dirs:
-      ./.
+      ./
   build-depends:
       base >=4.9 && <5
-    , base-prelude >=1.3 && <1.5
+    , base-prelude >=1.3 && <1.7
     , integer-logarithms ==1.0.*
   build-tool-depends:
       hpre:hpre ==1.*
-  default-extensions: BangPatterns BlockArguments ConstraintKinds DataKinds DerivingVia GeneralizedNewtypeDeriving NoImplicitPrelude KindSignatures ScopedTypeVariables TypeApplications TypeFamilies UnicodeSyntax
+  default-extensions:
+      BangPatterns
+      BlockArguments
+      ConstraintKinds
+      DataKinds
+      DerivingVia
+      GeneralizedNewtypeDeriving
+      NoImplicitPrelude
+      KindSignatures
+      ScopedTypeVariables
+      TypeApplications
+      TypeFamilies
+      UnicodeSyntax
   ghc-options: -pgmF hpre -F
   default-language: Haskell2010
