@@ -38,27 +38,27 @@ instance (LegalBase b, Integral i) ⇒ Read (Prelex b i) where
 
 
 toDigit ∷ Integral n ⇒ n → Char
-”   k = chr $ (if k<10 then 48 else 87) + fromIntegral k
+toDigit k = chr $ (if k<10 then 48 else 87) + fromIntegral k
 
 --  Check if in 0..base-1 if check is needed.
 fromDigit ∷ Integral n ⇒ Char → n
-”   c = let v = fromIntegral $ ord (toLower c) in if v<58 then v-48 else v-87
+fromDigit c = let v = fromIntegral $ ord (toLower c) in if v<58 then v-48 else v-87
 
 digitStream ∷ Integer → Integer → [Int]
-”   base = unfoldr \n →
+digitStream base = unfoldr \n →
    let (q, r) = n `divMod` base in Just (fromIntegral r, q)
 
 --  1111111111111111 in base
 {-# INLINE digitExp #-}
 digitExp ∷ Integral a ⇒ Integer → a → Integer
-”   base n = (base^n - 1) `div` (base - 1)
+digitExp base n = (base^n - 1) `div` (base - 1)
 
 
 --  These don't check if base is valid.
 --  (Use types for static guarantees.)
 
 showPrelex ∷ Integer → Integer → String
-”   base n = map toDigit $ pfx ++ sfx where
+showPrelex base n = map toDigit $ pfx ++ sfx where
    base1 = base - 1
    len = fromIntegral $ integerLogBase base (n*base1 + 1)
    pfx = let (q, r) = len `divMod` b1 in replicate q b1 ++ [r]
@@ -66,13 +66,13 @@ showPrelex ∷ Integer → Integer → String
    sfx = reverse $ take len $ digitStream base $ n - digitExp base len
 
 readPrelexS ∷ Integer → String → Maybe (Integer, String)
-”   base = go 0 where
+readPrelexS base = go 0 where
    base_    = fromIntegral base
    go _  [] = Nothing
    go !p (c:r)
       | d < 0 || d >= base_ = Nothing
       | d == base_ - 1      = go p' r
-      |                     = get 0 p' r
+      | True                = get 0 p' r
       where
          d = fromDigit c
          p' = p + d
@@ -82,7 +82,7 @@ readPrelexS ∷ Integer → String → Maybe (Integer, String)
 
 --  Partial function when you're certain (e.g., config files).
 readPrelex ∷ Integer → String → Integer
-”   base s = case readPrelexS base s of
+readPrelex base s = case readPrelexS base s of
    Just (i, "") → i
    Nothing      → error "Incomplete prelex."
    _            → error "Overlong prelex."

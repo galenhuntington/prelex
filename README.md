@@ -1,5 +1,3 @@
-Note:  This package requires GHC 8.6 or later.  It also requires
-installation of [hpre](https://github.com/galenhuntington/hpre).
 Install with `cabal install` or `stack install`.
 
 ##  Intro
@@ -147,3 +145,4 @@ which is not the expected use case.  In the expected case, it is bloat.
 There are other variants that make some codes slightly shorter
 for certain usage profiles, but at the expense of introducing a
 proliferation of types.
+
