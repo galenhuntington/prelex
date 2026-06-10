@@ -76,10 +76,11 @@ readPrelexS base = go 0 where
       where
          d = fromDigit c
          p' = p + d
-         get !acc 0 l     = Just (digitExp base p' + acc, l)
-         get !acc k (c:l) | dd >= 0 && dd < base_ = get (acc * base + dd) (k-1) l
-            where dd = fromDigit c
-         get _    _ _     = Nothing
+         get !acc 0 l = Just (digitExp base p' + acc, l)
+         get !acc k (c':l) | d' >= 0 && d' < base_
+                      = get (acc * base + d') (k-1) l
+            where d' = fromDigit c'
+         get _    _ _ = Nothing
 
 --  Partial function when you're certain (e.g., config files).
 readPrelex ∷ Integer → String → Integer
