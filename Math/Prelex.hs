@@ -70,14 +70,15 @@ readPrelexS base = go 0 where
    base_    = fromIntegral base
    go _  [] = Nothing
    go !p (c:r)
-      | d < 0 || d >= base_ = Nothing
-      | d == base_ - 1      = go p' r
-      | True                = get 0 p' r
+      | d == base_ - 1 = go p' r
+      | valid d        = get 0 p' r
+      | True           = Nothing
       where
          d = fromDigit c
          p' = p + d
+         valid d' = d' >= 0 && d' < base_
          get !acc 0 l = Just (digitExp base p' + acc, l)
-         get !acc k (c':l) | d' >= 0 && d' < base_
+         get !acc k (c':l) | valid d'
                       = get (acc * base + d') (k-1) l
             where d' = fromDigit c'
          get _    _ _ = Nothing
